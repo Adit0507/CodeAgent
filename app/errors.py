@@ -10,7 +10,12 @@ class IngestError(Exception):
 class InvalidRepoURL(IngestError):
     status_code= 404
     code= "repo_not_found"
- 
+
+class RepoNotFound(IngestError):
+    """Also used for private repos: we only support public ones."""
+    status_code = 404
+    code = "repo_not_found"
+
 class RefNotFound(Exception):
     status_code = 404
     code = "ref_not_found"
